@@ -1,0 +1,28 @@
+{% extends "emailLayout.html.twig" %}
+{% block emailcontent %}
+<h3>Contactformulier</h3>
+<p>
+Op dirigendo.nl is het contactformulier ingevuld. Hieronder de informatie.
+</p>
+<p>
+<table>
+    <tr>
+        <td>Voornaam:</td><td>{{formData.firstname}}</td>
+    </tr>
+        <tr>
+        <td>Achternaam:</td><td>{{formData.lastname}}</td>
+    </tr>
+        <tr>
+        <td>Email:</td><td>{{formData.email}}</td>
+    </tr>
+        <tr>
+        <td>Type:</td><td>{{formData.type}}</td>
+    </tr>
+        <tr>
+        <td>Bericht:</td><td>{{formData.message}}</td>
+    </tr>
+</table>
+<br>
+
+</p>
+{% endblock %}    

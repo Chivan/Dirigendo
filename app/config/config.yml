@@ -1,0 +1,91 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml } 
+    - { resource: "@DirigendoFrontEndBundle/Resources/config/services.yml" }
+
+
+framework:
+    #esi:             ~
+    translator:      { fallback: "%locale%" }
+    secret:          "%secret%"
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: "%kernel.debug%"
+    form:            true
+    csrf_protection: true
+    validation:      { enable_annotations: true }
+    templating:      { engines: ['twig'] } #assets_version: SomeVersionScheme
+    default_locale:  "%locale%"
+    trust_proxy_headers: false # Deprecated in 2.0; will be removed in 2.3 (used trusted_proxies instead)
+    trusted_proxies: ~
+    session:         ~
+
+# Twig Configuration
+twig:
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+
+
+# Assetic Configuration
+assetic:
+    debug:          "%kernel.debug%"
+    use_controller: false
+    bundles:        [ DirigendoFrontEndBundle ]
+    #java: /usr/bin/java
+    filters:
+        cssrewrite: ~
+        #closure:
+        #    jar: "%kernel.root_dir%/Resources/java/compiler.jar"
+        #yui_css:
+        #    jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        default_connection:   frontend
+        connections:
+          frontend:
+              driver:   %database_driver%
+              host:     %database_host%
+              port:     %database_port%
+              dbname:   %database_name%
+              user:     %database_user%
+              password: %database_password%
+              charset:  UTF8
+          geodata:
+              driver:   %database_driver_geodata%
+              host:     %database_host_geodata%
+              port:     %database_port_geodata%
+              dbname:   %database_name_geodata%
+              user:     %database_user_geodata%
+              password: %database_password_geodata%
+              charset:  UTF8
+              mapping_types:
+               geometry: geometry
+        types:
+          geometry: Dirigendo\FrontEndBundle\MysqlSpatial\lib\CrEOF\DBAL\Types\GeometryType
+    orm:
+      default_entity_manager:   frontend
+      entity_managers:
+          frontend:
+              metadata_cache_driver: apc
+              result_cache_driver: apc
+              query_cache_driver: apc
+              connection:       frontend
+              mappings:
+                  DirigendoFrontEndBundle: ~
+          geodata:
+              metadata_cache_driver: apc
+              result_cache_driver: apc
+              query_cache_driver: apc
+              connection:       geodata
+              mappings:
+                  DirigendoFrontEndBundle: ~
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: "%mailer_transport%"
+    host:      "%mailer_host%"
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"
+    spool:     { type: memory }

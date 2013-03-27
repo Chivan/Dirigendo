@@ -1,0 +1,3 @@
+dirigendo_back_end_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: DirigendoBackEndBundle:Default:index }

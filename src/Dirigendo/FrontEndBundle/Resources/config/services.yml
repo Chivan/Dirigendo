@@ -1,0 +1,42 @@
+parameters:
+    main_menu_controller.class:      Dirigendo\FrontEndBundle\Controller\MainMenuController
+    caroussel_controller.class:      Dirigendo\FrontEndBundle\Controller\CarousselController
+    service_tiles_controller.class:      Dirigendo\FrontEndBundle\Controller\ServiceTilesController
+    templatesEmailSender.class:      Dirigendo\FrontEndBundle\Services\TemplatedEmailSender
+
+services:
+    DirigendoFrontEndBundle.MainMenuController:
+        class:        "%main_menu_controller.class%"
+        arguments:    
+          entityManager: "@doctrine.orm.entity_manager"
+    DirigendoFrontEndBundle.CarousselController:
+        class:        "%caroussel_controller.class%"    
+        arguments:    
+          entityManager: "@doctrine.orm.entity_manager"
+    DirigendoFrontEndBundle.ServiceTilesController:
+        class:        "%service_tiles_controller.class%"    
+        arguments:    
+          entityManager: "@doctrine.orm.entity_manager"          
+    
+    dirigendofrontend.twig.extension.loader:
+        class:        Twig_Extension_StringLoader
+        tags:
+             - { name: 'twig.extension' }
+    DirigendoFrontEndBundle.TemplatedEmailSender:
+        class:        "%templatesEmailSender.class%"
+        arguments:
+          mailer:     "@mailer"
+          twig:       "@twig"
+    DirigendoFrontEndBundle.LocationValidator:          
+        class: Dirigendo\FrontEndBundle\Validator\Constraints\LocationValidator
+        arguments:
+          entityManager: "@doctrine.orm.geodata_entity_manager"
+        tags:
+            - { name: validator.constraint_validator, alias: locationValidator }
+    DirigendoFrontEndBundle.ServiceValidator:          
+        class: Dirigendo\FrontEndBundle\Validator\Constraints\ServiceValidator
+        arguments:
+          entityManager: "@doctrine.orm.entity_manager"
+        tags:
+            - { name: validator.constraint_validator, alias: serviceValidator }                 
+          

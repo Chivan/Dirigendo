@@ -1,0 +1,68 @@
+{% extends "DirigendoFrontEndBundle::layout.html.twig" %}
+{% form_theme form with ['DirigendoFrontEndBundle:Form:dirigendo_form.html.twig'] %}
+{% block title %}{{ content.Title }}{% endblock %}
+{% block description %}{{content.Description}}{% endblock %}
+{% block keywords %}{{content.Keywords}}{% endblock %}
+{% block javascripts %}
+{{ parent() }} 
+<script src="{{asset('bundles/dirigendofrontend/js/Carousel.js')}}" type="text/javascript"></script>        
+<script src="{{asset('bundles/dirigendofrontend/js/Jquery.wt-rotator.min.js')}}" type="text/javascript"></script>
+<script type="text/javascript" src="{{ asset('bundles/bazingaexposetranslation/js/translator.min.js') }}"></script>
+<script type="text/javascript" src="{{ url('bazinga_exposetranslation_js', { 'domain_name': 'validators', '_locale' : 'nl' }) }}"></script>
+{{ JSFV(form) }}
+{% endblock %}
+{% block white_content %}
+<div style="width: 960px; position: relative">
+    <div style="  background-color: #FFFFFF;
+    display: block;
+    height: 190px;
+    opacity: 0.7;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    visibility: visible;
+    width: 280px;
+    z-index: 150;">        </div>
+
+    <form novalidate="true" action="{{ path('_home') }}" method="post" {{ form_enctype(form) }} style="position: absolute; z-index: 151; right: 35px; top: 35px;">
+    {{ form_widget(form) }}
+
+            <input type="submit" value="Zoeken" style="float: right" />
+                </form>
+        </div>
+{% render "DirigendoFrontEndBundle.CarousselController:carousselAction"  %}
+            <div style="width: 960px; text-align: center; margin-top: 15px; margin-bottom: 10px;">
+                <img src="{{ asset('bundles/dirigendofrontend/images/123.png') }}" alt="dirigendo 123">
+            </div>  
+{% endblock %}
+
+{% block gray_content %}
+                <div id="content_box">
+
+                    <div id="left-content-box" style="width: 480px;">
+                   {% for b in benefits %}    
+                        
+                     <div  class="benefit">
+                            <img src="{{asset('bundles/dirigendofrontend/images/icons/arrow.png')}}" alt="checkbox"></div>
+                        <div class="benefitdesc">
+                            <h2>{{ b.header }}</h2>
+                            {{ b.text }}
+                         </div>
+                        <div style="clear: both"></div>
+                        
+                                        {% endfor %}    
+                    </div>
+                    
+
+                    <div id="right-content-box" style="margin-top: 15px; vertical-align: bottom;">
+                        <img src="{{asset('bundles/dirigendofrontend/images/welkom.jpg')}}" style="margin-top: 25px; vertical-align: bottom; position: relative; bottom: 0px;" alt="Welkom">
+                    </div>
+                    <div style="text-align: center; margin-bottom: -20px;">
+                        <img src="{{asset('bundles/dirigendofrontend/images/hrbig2.png')}}" alt="hr">
+                    </div>
+                    <div class="clear"></div>
+                    <a id="services"></a>
+{% render "DirigendoFrontEndBundle.ServiceTilesController:serviceTilesAction" %}
+                    <div class="clear"></div>
+                </div>
+{% endblock %}

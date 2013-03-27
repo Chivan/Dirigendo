@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Adminlevel2" table="adminlevel2">
+    <id name="id" type="integer" column="ID">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="countryname" type="string" column="CountryName" length="255" nullable="true"/>
+    <field name="name" type="string" column="Name" length="255" nullable="true"/>
+    <field name="adminlevel1name" type="string" column="AdminLevel1Name" length="255" nullable="true"/>
+    <field name="geom" type="geometry" column="geom" nullable="true"/>
+    <many-to-one field="countryid" target-entity="Countries">
+      <join-columns>
+        <join-column name="CountryID" referenced-column-name="ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="adminleveltypeid" target-entity="Adminleveltypes">
+      <join-columns>
+        <join-column name="AdminLevelTypeID" referenced-column-name="ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="adminlevel1id" target-entity="Adminlevel1">
+      <join-columns>
+        <join-column name="AdminLevel1ID" referenced-column-name="ID"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

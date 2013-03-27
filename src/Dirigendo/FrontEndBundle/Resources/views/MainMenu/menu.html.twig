@@ -1,0 +1,12 @@
+<ul>
+{% for key, m in menu %}
+<li><a href="{{ path('_service', { 'serviceName' : key}) }}">{{ key }}</a>
+    <ul>
+        {% for s in m %}
+            <li><img style="margin-left:4px; margin-top:16px;" src="{{asset('bundles/dirigendofrontend/images/puntje2.png')}}"><a href="{{ path('_service', { 'serviceName' : s.Name}) }}">{{ s.Name }}</a></li>
+        {% endfor %}    
+    </ul>
+        <img style="margin-left:4px;" src="{{asset('bundles/dirigendofrontend/images/puntje.png')}}">
+</li>
+{% endfor %}
+</ul>

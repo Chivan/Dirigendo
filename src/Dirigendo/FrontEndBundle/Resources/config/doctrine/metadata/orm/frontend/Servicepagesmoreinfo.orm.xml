@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Servicepagesmoreinfo" table="servicepagesmoreinfo">
+    <id name="id" type="integer" column="ID">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="name" type="string" column="Name" length="255" nullable="false"/>
+    <field name="title" type="string" column="Title" length="255" nullable="false"/>
+    <field name="keywords" type="text" column="Keywords" nullable="false"/>
+    <field name="description" type="text" column="Description" nullable="false"/>
+    <field name="tagline" type="string" column="TagLine" length="255" nullable="false"/>
+    <field name="taglinetextsize" type="integer" column="TaglineTextSize" nullable="false"/>
+    <field name="contentbox1" type="text" column="ContentBox1" nullable="false"/>
+    <field name="timestamp" type="datetime" column="TimeStamp" nullable="false"/>
+    <many-to-one field="serviceid" target-entity="Services">
+      <join-columns>
+        <join-column name="ServiceID" referenced-column-name="ID"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

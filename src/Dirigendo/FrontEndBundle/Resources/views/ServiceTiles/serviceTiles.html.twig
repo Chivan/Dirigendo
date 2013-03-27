@@ -1,0 +1,10 @@
+                    <div id="serviceTiles">
+{% for s in servicetiles %} 
+
+<div class="servicetile" {% if loop.index is not divisibleby(4) %} style="margin-right: 24px;" {% endif %}>
+     <span class="servicename"><a href="{{ path('_service', { 'serviceName' : s.Name}) }}">{{ s.Name }}</a></span>
+    <a href="{{ path('_service', { 'serviceName' : s.Name}) }}"><img src="{{ asset('bundles/dirigendofrontend/Images/servicetiles/') }}{{ s.TileImage }}" alt="{{ s.Name }}"></a>
+</div>
+                     
+{% endfor %}
+   </div>

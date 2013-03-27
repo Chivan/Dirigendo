@@ -1,0 +1,43 @@
+_home:
+    pattern:  /
+    defaults: { _controller: DirigendoFrontEndBundle:Default:index }
+
+_findService:
+   pattern:   /ajax/findService/
+   defaults: { _controller: DirigendoFrontEndBundle:Ajax:findService, _format: json }
+
+_findLocation:
+   pattern:   /ajax/findLocation/
+   defaults: { _controller: DirigendoFrontEndBundle:Ajax:findLocation, _format: json }
+   
+_validateService:
+   pattern:   /ajax/validateService/
+   defaults: { _controller: DirigendoFrontEndBundle:Ajax:validateService, _format: json }
+
+_validateLocation:
+   pattern:   /ajax/validateLocation/
+   defaults: { _controller: DirigendoFrontEndBundle:Ajax:validateLocation, _format: json }   
+
+_over:
+    pattern:  /over
+    defaults: { _controller: DirigendoFrontEndBundle:Default:over }
+    
+_deelnemen:
+    pattern:  /deelnemen
+    defaults: { _controller: DirigendoFrontEndBundle:Default:deelnemen }
+    
+_contact:
+    pattern:  /contact
+    defaults: { _controller: DirigendoFrontEndBundle:Default:contact }   
+    
+_contactThanks:
+    pattern:  /contact/bedankt
+    defaults: { _controller: DirigendoFrontEndBundle:Default:contactThanks } 
+    
+_service:
+    pattern:  /{serviceName}
+    defaults: { _controller: DirigendoFrontEndBundle:Service:service }    
+
+_serviceWithLocation:
+    pattern: /{serviceName}/{location}
+    defaults: { _controller: DirigendoFrontEndBundle:Service:serviceWithLocation } 

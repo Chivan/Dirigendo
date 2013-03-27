@@ -1,0 +1,28 @@
+function Service(field, params)
+{
+var fieldValue = field && field.nodeName ? {{ getJsFormElementValue('field') }} : field;
+
+if (isNotDefined(fieldValue)) {
+return true;
+}
+
+fieldValue = String(fieldValue);
+
+$.ajax({
+url: '{{ path('_validateService') }}?value=' + fieldValue,
+async: false,
+dataType: 'json',
+success: function (response) {
+   serviceValid = Boolean(response);
+}
+});
+
+
+if(serviceValid == true )
+{
+return true;
+}
+
+return getComputeMessage(params.message);
+
+}

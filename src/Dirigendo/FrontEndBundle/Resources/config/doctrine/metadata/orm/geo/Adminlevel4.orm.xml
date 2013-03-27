@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Adminlevel4" table="adminlevel4">
+    <id name="id" type="integer" column="ID">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="name" type="string" column="Name" length="255" nullable="true"/>
+    <field name="xcoord" type="string" column="XCOORD" length="255" nullable="true"/>
+    <field name="ycoord" type="string" column="YCOORD" length="255" nullable="true"/>
+    <field name="pc4code" type="string" column="PC4CODE" length="255" nullable="true"/>
+    <field name="pc3code" type="string" column="PC3CODE" length="255" nullable="true"/>
+    <field name="pc2code" type="string" column="PC2CODE" length="255" nullable="true"/>
+    <field name="pc1code" type="string" column="PC1CODE" length="255" nullable="true"/>
+    <field name="adminlevel1name" type="string" column="AdminLevel1Name" length="255" nullable="true"/>
+    <field name="adminlevel2name" type="string" column="AdminLevel2Name" length="255" nullable="true"/>
+    <field name="adminlevel3name" type="string" column="AdminLevel3Name" length="255" nullable="true"/>
+    <field name="geom" type="geometry" column="geom" nullable="true"/>
+    <many-to-one field="adminlevel2id" target-entity="Adminlevel2">
+      <join-columns>
+        <join-column name="AdminLevel2ID" referenced-column-name="ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="adminlevel1id" target-entity="Adminlevel1">
+      <join-columns>
+        <join-column name="AdminLevel1ID" referenced-column-name="ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="adminleveltypeid" target-entity="Adminleveltypes">
+      <join-columns>
+        <join-column name="AdminLevelTypeID" referenced-column-name="ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="adminlevel3id" target-entity="Adminlevel3">
+      <join-columns>
+        <join-column name="AdminLevel3ID" referenced-column-name="ID"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

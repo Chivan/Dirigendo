@@ -1,0 +1,18 @@
+{% extends "DirigendoFrontEndBundle::layout.html.twig" %}
+{% block title %}{{ content.Title }}{% endblock %}
+{% block description %}{{content.Description}}{% endblock %}
+{% block keywords %}{{content.Keywords}}{% endblock %}
+{% block white_content %}
+            <div style="width: 960px;">
+            <div id="left-content-box" style="width: 740px; margin-top: 10px; margin-bottom: 20px;">
+               {% include template_from_string(content.ContentLeft) %}
+            </div>
+            <div id="right-content-box" style="width: 200px; margin-top: 10px;">
+              {% include template_from_string(content.ContentRight) %}
+            </div>
+                <div class="clear"></div>
+            </div>
+{% endblock %}
+{% block gray_content %}
+{% render "DirigendoFrontEndBundle.ServiceTilesController:serviceTilesAction" %}
+{% endblock %}

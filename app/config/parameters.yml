@@ -1,0 +1,20 @@
+parameters:
+    database_driver: pdo_mysql
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: dirigendofrontend
+    database_user: dirigendo
+    database_password: dirigendo
+    database_driver_geodata: pdo_mysql
+    database_host_geodata: 127.0.0.1
+    database_port_geodata: null
+    database_name_geodata: dirigendogeodata
+    database_user_geodata: dirigendo
+    database_password_geodata: dirigendo
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    locale: en
+    secret: 7b4ce324574fae5c5b1cc54707dec042b0680a94
+    database_path: null

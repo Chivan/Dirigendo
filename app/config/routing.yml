@@ -1,0 +1,20 @@
+dirigendo_front_end:
+    resource: "@DirigendoFrontEndBundle/Resources/config/routing.yml"
+    prefix:   /
+    
+_apy_jsformvalidation:
+    resource: "@APYJsFormValidationBundle/Resources/config/routing/routing.yml"
+    
+neutron_form:
+    resource: "@NeutronFormBundle/Resources/config/routing.xml"
+    prefix:   /     
+
+
+# Internal routing configuration to handle ESI
+# ****** WARNING ******
+# This route should be enabled with caution as it can open a security vulnerability
+# see http://symfony.com/blog/security-release-symfony-2-0-20-and-2-1-5-released for more information
+# ****** WARNING ******
+#_internal:
+#    resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
+#    prefix:   /_internal

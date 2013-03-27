@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block head %}
+        <title>{% block title %}Dirigendo.nl{% endblock %}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta name="description" content="{% block description %}Description{% endblock %}" />
+        <meta name="keywords" content="{% block keywords %}Dirigendo{% endblock %}" />
+        <link rel="shortcut icon" href="/favicon.ico">
+        {% stylesheets 'bundles/dirigendofrontend/css/*.css' filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url  }}">
+        {% endstylesheets  %}
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-37655566-1']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+{% block javascripts %}
+
+    {% javascripts
+        'bundles/dirigendofrontend/js/jquery.js'
+        'bundles/dirigendofrontend/js/Jquery-ui.js'
+        'bundles/neutronform/js/autocomplete.js'
+
+    %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+{% endblock %}
+{% endblock %}
+    </head>
+    <body>
+        <div id="main_container">
+            <table id="header">
+                <tr>
+                    <td style="text-align: left; width: 700px;">
+                    <a href="{{ path('_home') }}">
+                    <img style="float: left;" src="{{ asset('bundles/dirigendofrontend/images/logo.jpg') }}" alt="dirigendo.nl">
+                    </a>
+                    <div style="font-size:30px; color: #a6a6a6; margin-top: -1px; margin-left:212px;">
+                    </div></td>
+                    <td><a href="{{ path('_over') }}">Over Dirigendo.nl</a> | 
+                        <a href="{{ path('_deelnemen') }}">Bedrijf aanmelden</a></td>
+                </tr>
+            </table> 
+            <div id="nav">
+                <div  id ="nav_container">
+                   {% render "DirigendoFrontEndBundle.MainMenuController:menuAction"  %}
+                </div>
+            </div>
+            {% block white_content %}{% endblock %}    
+  
+            <div id="graydiv">
+                <div id="content_box">
+                    {% block gray_content %}{% endblock %}
+                </div>
+            </div>
+            <div id="footer">
+                           <div style="width: 960px;">
+                    <div>
+                        <ul>
+                            <li><a href="{{ path('_over') }}">Over Dirigendo.nl</a> |</li>
+                            <li><a href="{{ path('_deelnemen') }}">Bedrijf aanmelden</a> |</li>
+                            <li><a href="{{ path('_over') }}#Privacy">Privacy</a> |</li>
+                            <li><a href="{{ path('_contact') }}">Contact</a></li>
+                        </ul>
+                        <br>
+                        Copyright © Dirigendo.nl - Alle rechten voorbehouden. 
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </body>
+</html>

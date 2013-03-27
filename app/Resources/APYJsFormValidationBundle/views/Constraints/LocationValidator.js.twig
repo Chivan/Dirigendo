@@ -1,0 +1,28 @@
+function Location(field, params)
+{
+var fieldValue = field && field.nodeName ? {{ getJsFormElementValue('field') }} : field;
+
+if (isNotDefined(fieldValue)) {
+return true;
+}
+
+fieldValue = String(fieldValue);
+
+$.ajax({
+url: '{{ path('_validateLocation') }}?value=' + fieldValue,
+async: false,
+dataType: 'json',
+success: function (response) {
+   locationValid = Boolean(response);
+}
+});
+
+
+if(locationValid == true )
+{
+return true;
+}
+
+return getComputeMessage(params.message);
+
+}

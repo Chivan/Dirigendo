@@ -1,0 +1,45 @@
+<div class="container" style=" border: 1px solid #333333; width:960px;">
+    <div class="wt-rotator">
+        <div class="screen">
+            <noscript>
+            <!-- placeholder 1st image when javascript is off -->
+            <img src="{{ asset('bundles/dirigendofrontend/Images/logo.png') }}" alt="Logo"/>
+            </noscript>
+        </div>
+        <div class="c-panel">
+            <div class="thumbnails">
+                <ul>
+                    <li>
+                        <a href="{{ asset('bundles/dirigendofrontend/images/carrousel/mainbanner.png') }}" title="Dirigendo.nl"></a>
+                    <!--    <a href="#services"></a>                        
+                        <div style="left:595px; width:365px; top:20px; height:160px; background-color:#1f334b; color:#FFF; text-align=right;">
+                            <div style="text-align: right; width:365px; height:160px;">
+                                <div style="font-size:46px; margin-right:50px; padding-top:10px; text-shadow: 1px 1px 10px #333333;"><img src="{{ asset('bundles/dirigendofrontend/Images/logowit.png') }}"></div>
+                                <div style="margin-right: 50px; margin-top: 5px; font-size:12px; text-shadow: 1px 1px 10px #333333;">Offertes vergelijken voor klusopdrachten <br> in en om het huis.</div>
+                                <a href="#services" style="display: block; margin-right: 45px; margin-top: 15px;" ><img src="{{ asset('bundles/dirigendofrontend/Images/kiesopdracht.png') }}" alt="Meer info"></a>
+                            </div>
+                        </div> -->
+                    </li>     
+{% for i in images %}
+                    <li>
+                        <a href="{{ asset('bundles/dirigendofrontend/Images/carrousel/') }}{{ i.Image }}" title="{{ i.Title }}"></a>
+            <!--            <a href="{{ path('_service', { 'serviceName' : i.serviceid.Name}) }}"></a>                        
+                        <div style="left:595px; width:365px; top:20px; height:160px; background-color:#1f334b; color:#FFF; text-align:right;">
+                            <div style="text-align: right; width:365px; height:160px;">
+                                <div style="font-size:46px; margin-right:50px; padding-top:10px; text-shadow: 1px 1px 10px #333333;">{{ i.Title }}</div>
+                                <div style="margin-right: 50px; margin-top: 5px; font-size:12px; text-shadow: 1px 1px 10px #333333;">{{ i.Text }}</div>
+                                <a href="{{ path('_service', { 'serviceName' : i.serviceid.Name}) }}" style="display: block; margin-right: 45px; margin-top: 15px;" ><img src="{{ asset('bundles/dirigendofrontend/Images/meerinfo.png') }}" alt="Meer info"></a>
+                            </div>
+                        </div> -->
+                    </li> 
+{%endfor%}
+                </ul>
+            </div>     
+            <div class="buttons">
+                <div class="prev-btn"></div>
+                <div class="play-btn"></div>    
+                <div class="next-btn"></div>               
+            </div>
+        </div>
+    </div>	
+</div>
